@@ -1,0 +1,554 @@
+/* Write your CSS Here. */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2px;
+    background-color: rgb(139, 74, 74);
+
+    transition: all 1s ease-out;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 15vh;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-shadow: 2px 4px 4px black;
+    background-color: rgb(179, 179, 179);
+}
+
+header img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+}
+
+header h2 {
+    color: darkblue;
+}
+
+.game-title {
+    color: darkblue;
+    font-size: 70px;
+}
+
+.score {
+    color: rgb(238, 255, 0);
+}
+
+.instruction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 55vw;
+}
+
+.instruction-container h1 {
+    font-size: 37px;
+    color: rgb(255, 0, 0);
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+}
+
+.instruction-container h2 {
+    font-size: 34px;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px rgb(255, 0, 0);
+    margin: 20px 0;
+}
+
+.instruction-container p {
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.gameBox {
+    width: 50%;
+    background-color: rgb(253, 199, 193);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 2px 4px 8px 1px black;
+    margin-top: 150px;
+}
+
+.timer-display {
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    background-color: rgb(47, 126, 47);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 2px 4px 8px 1px black;
+
+}
+
+.timerCount {
+    color: darkblue;
+}
+
+.question {
+    text-align: center;
+    color: rgb(94, 44, 12);
+    font-size: 25px;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+
+}
+
+input {
+    width: 90%;
+    height: 35px;
+    font-size: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+
+    color: rgb(10, 6, 70);
+}
+
+input::placeholder {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: cursive;
+}
+
+.submit,
+.skip,
+.restart,
+.start-button {
+    width: 150px;
+    height: 40px;
+    font-size: 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: rgb(47, 126, 47);
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 4px 1px black;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    letter-spacing: 2px;
+}
+
+.restart {
+    background-color: rgb(153, 1, 1);
+    margin-top: 50px;
+}
+
+.start-button {
+    background-color: white;
+    color: rgb(22, 77, 22);
+}
+
+.start-button:hover {
+    background-color: rgb(22, 77, 22);
+    color: white;
+}
+
+.restart:hover {
+    background-color: rgb(22, 77, 22);
+    color: whitesmoke;
+}
+
+.submit:hover,
+.skip:hover,
+.restart:hover {
+    filter: brightness(.9);
+}
+
+.submit:active,
+.skip:active,
+.restart:active,
+.start-button:active {
+    transform: scale(.9);
+}
+
+.skip {
+    margin: 10px 0 30px 0;
+}
+
+.congrat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 45vw;
+
+    top: 50%;
+    left: 50%;
+    letter-spacing: 2px;
+    color: white;
+
+    transform: translate(-50%, -50%);
+    background-color: rgb(231, 75, 18);
+    border-radius: 15px;
+    box-shadow: 2px 4px 8px 1px black;
+
+    transition: all 400ms ease-in-out;
+    animation: celebration 3.5s linear;
+}
+
+.congrat h1 {
+    font-size: 60px;
+    animation: TextFlashing 300ms ease infinite;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    margin: 20px 0 0 0;
+}
+
+.congrat p:nth-of-type(1) {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    margin: 10px 0 0 0;
+}
+
+.congrat p:nth-of-type(2) {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    margin: 10px 0 0 0;
+}
+
+.congrat p:nth-of-type(2) span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    color: rgb(236, 4, 4);
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+    margin: 5px 0 0 0;
+    animation: TextFlashing 300ms ease infinite;
+}
+
+.gameOver {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 55vw;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1s ease-out;
+
+    animation: setGameOverAnime 1s ease-out;
+}
+
+.gameOver h1 {
+    color: white;
+    font-size: 120px;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    letter-spacing: 2px;
+
+}
+
+.gameOver h1 span {
+    position: relative;
+    display: inline-flex;
+    animation: animeCrying 1.9s ease-in infinite;
+
+}
+
+@keyframes animeCrying {
+    0% {
+        top: 0;
+    }
+
+    20% {
+
+        top: -40px
+    }
+
+    40% {
+
+        top: 0
+    }
+
+    60% {
+
+        top: -100px
+    }
+
+    80% {
+
+        top: 0
+    }
+}
+
+@keyframes resumeGameOverAnime {
+    0% {
+        top: 50%;
+        left: 50%;
+    }
+
+    100% {
+        top: -150%;
+        left: 50%
+    }
+}
+
+@keyframes setGameOverAnime {
+    0% {
+        top: 150%;
+        left: 50%;
+    }
+
+    100% {
+        top: 50%;
+        left: 50%
+    }
+}
+
+@keyframes instructionEntrance {
+    0% {
+        top: 50%;
+        left: -150%;
+    }
+
+    100% {
+        top: 50%;
+        left: 50%
+    }
+}
+
+@keyframes resumeInstruction {
+    0% {
+        top: 50%;
+        left: 50%;
+    }
+
+    100% {
+        top: 50%;
+        left: 150%
+    }
+}
+
+@keyframes gameResetAnime {
+    0% {
+        width: 30%;
+        height: 30%;
+        top: 50%;
+        left: 50%;
+    }
+
+    100% {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes TextFlashing {
+    0% {
+        color: blue
+    }
+
+    20% {
+        color: red
+    }
+
+    40% {
+        color: green
+    }
+
+    60% {
+        color: yellow
+    }
+
+    80% {
+        color: orangered
+    }
+}
+
+@keyframes celebration {
+    0% {
+        top: -50%;
+        left: 50%;
+    }
+
+    20% {
+        top: 30%;
+        left: 80%;
+        transform: rotate(180deg);
+    }
+
+    40% {
+        top: 70%;
+        left: 30%;
+        transform: rotate(360deg);
+    }
+
+    60% {
+        top: 50%;
+        left: 0%;
+        transform: rotate(540deg);
+    }
+
+    80% {
+        top: 0%;
+        right: 50%;
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes resumeCongratulation {
+    0% {
+        top: 50%;
+        left: 50%;
+    }
+
+    100% {
+        top: -150%;
+        left: 50%;
+        opacity: 0.2;
+    }
+}
+
+@media only screen and (max-width : 1360px) and (min-width: 698px) {
+
+    .gameOver h1 {
+        font-size: 75px;
+    }
+
+    .instruction-container {
+        width: 70vw;
+    }
+
+    .instruction-container h1 {
+        font-size: 3vw;
+    }
+
+    .instruction-container h2 {
+        font-size: 27px;
+    }
+
+    .instruction-container p {
+        font-size: 27px;
+    }
+
+    .congrat p:nth-of-type(1) {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    input {
+        width: 95%;
+    }
+
+    input::placeholder {
+
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+}
+
+@media only screen and (max-width : 713px) and (min-width: 150px) {
+
+    .game-title {
+
+        font-size: 30px;
+    }
+
+    .gameOver h1 {
+
+        font-size: 35px;
+    }
+
+    .submit,
+    .skip,
+    .restart,
+    .start-button {
+        width: 90px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .timer-display {
+        top: 150px;
+        padding: 5px;
+        font-size: 22px;
+    }
+
+    .question {
+
+        font-size: 18px;
+    }
+
+    input {
+        width: 95%;
+        height: 25px;
+        font-size: 16px;
+    }
+
+    input::placeholder {
+        text-align: center;
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .congrat {
+        width: 50vw;
+    }
+
+    .congrat h1 {
+        font-size: 35px;
+    }
+
+    .congrat p:nth-of-type(1),
+    .congrat p:nth-of-type(2) {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .congrat p:nth-of-type(2) span {
+        font-size: 35px;
+    }
+
+    .instruction-container {
+        width: 80vw;
+    }
+
+    .instruction-container h1 {
+        font-size: 3.5vw;
+    }
+
+    .instruction-container h2,
+    .instruction-container p {
+        font-size: 25px;
+    }
+}
